@@ -1,1 +1,0 @@
-# ACTION, GOTO 테이블 구조
