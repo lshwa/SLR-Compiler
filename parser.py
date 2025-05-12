@@ -1,13 +1,12 @@
 from typing import List, Tuple, Union
 
-# --- 고정 부분: 수정 금지 ---
 class ParseTree:
-    def __init__(self, symbol, children = None):
+    def __init__(self, symbol, children=None):
         self.symbol = symbol
         self.children = children or []
 
-    def __repr__(self, level = 0):
-        ret = " " * level + self.symbol + "\n"
+    def __repr__(self, level=0):
+        ret = "  " * level + self.symbol + "\n"
         for child in self.children:
             ret += child.__repr__(level + 1)
         return ret
@@ -17,7 +16,6 @@ class ErrorReport:
         self.position = position
         self.message = message
 
-# --- CFG 정의 ---
 cfg = {
     -1: "S' → Program",
     0: "Program → DeclList",
@@ -35,33 +33,34 @@ cfg = {
     12: "Block → { StmtList }",
     13: "StmtList → Stmt StmtList",
     14: "StmtList → ε",
-    15: "Stmt → MatchedStmt",
-    16: "Stmt → UnmatchedStmt",
-    17: "MatchedStmt → if ( Expr ) MatchedStmt else MatchedStmt",
-    18: "MatchedStmt → while ( Expr ) MatchedStmt",
-    19: "MatchedStmt → for ( Expr ; Expr ; Expr ) MatchedStmt",
-    20: "MatchedStmt → return Expr ;",
-    21: "MatchedStmt → ExprStmt",
-    22: "MatchedStmt → Block",
-    23: "UnmatchedStmt → if ( Expr ) Stmt",
-    24: "UnmatchedStmt → if ( Expr ) MatchedStmt else UnmatchedStmt",
-    25: "Expr → EqualityExpr",
-    26: "EqualityExpr → EqualityExpr == AddExpr",
-    27: "EqualityExpr → AddExpr",
-    28: "AddExpr → AddExpr + MulExpr",
-    29: "AddExpr → MulExpr",
-    30: "MulExpr → MulExpr * UnaryExpr",
-    31: "MulExpr → UnaryExpr",
-    32: "UnaryExpr → - UnaryExpr",
-    33: "UnaryExpr → id ( ArgList )",
-    34: "UnaryExpr → id",
-    35: "UnaryExpr → num",
-    36: "UnaryExpr → ( Expr )",
-    37: "ExprStmt → Expr ;",
-    38: "ArgList → Expr , ArgList",
-    39: "ArgList → Expr",
-    40: "ArgList → ε",
-    41: "MatchedStmt → VarDecl"  # Block 안에서 선언 가능하게 추가
+    15: "Stmt → IfStmt",
+    16: "Stmt → LoopStmt",
+    17: "Stmt → ReturnStmt",
+    18: "Stmt → ExprStmt",
+    19: "Stmt → VarDecl",
+    20: "Stmt → Block",
+    21: "IfStmt → if ( Expr ) Stmt ElsePart",
+    22: "ElsePart → else Stmt",
+    23: "ElsePart → ε",
+    24: "LoopStmt → while ( Expr ) Stmt",
+    25: "LoopStmt → for ( Expr ; Expr ; Expr ) Stmt",
+    26: "ReturnStmt → return Expr ;",
+    27: "ExprStmt → Expr ;",
+    28: "Expr → EqualityExpr",
+    29: "EqualityExpr → EqualityExpr == AddExpr",
+    30: "EqualityExpr → AddExpr",
+    31: "AddExpr → AddExpr + MulExpr",
+    32: "AddExpr → MulExpr",
+    33: "MulExpr → MulExpr * UnaryExpr",
+    34: "MulExpr → UnaryExpr",
+    35: "UnaryExpr → - UnaryExpr",
+    36: "UnaryExpr → id ( ArgList )",
+    37: "UnaryExpr → id",
+    38: "UnaryExpr → num",
+    39: "UnaryExpr → ( Expr )",
+    40: "ArgList → Expr , ArgList",
+    41: "ArgList → Expr",
+    42: "ArgList → ε"
 }
 
 # --- CFG 전처리 ---
