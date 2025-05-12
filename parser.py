@@ -133,21 +133,20 @@ def compute_FOLLOW():
         changed = False
         for lhs in productions:
             for rhs in productions[lhs]:
-                follow_temp = FOLLOW[lhs].copy()
-                for i in range(len(rhs) - 1, -1, -1):
-                    sym = rhs[i]
-                    if sym in nonterminals:
-                        before = len(FOLLOW[sym])
-                        FOLLOW[sym].update(follow_temp)
-                        after = len(FOLLOW[sym])
+                trailer = FOLLOW[lhs].copy()
+                for symbol in reversed(rhs):
+                    if symbol in nonterminals:
+                        before = len(FOLLOW[symbol])
+                        FOLLOW[symbol].update(trailer)
+                        after = len(FOLLOW[symbol])
                         if after > before:
                             changed = True
-                        if 'ε' in FIRST[sym]:
-                            follow_temp.update(FIRST[sym] - {'ε'})
+                        if 'ε' in FIRST[symbol]:
+                            trailer.update(FIRST[symbol] - {'ε'})
                         else:
-                            follow_temp = FIRST[sym].copy()
+                            trailer = FIRST[symbol].copy()
                     else:
-                        follow_temp = FIRST[sym] if sym in FIRST else {sym}
+                        trailer = FIRST[symbol].copy()
 
 # --- LR(0) Item 클래스 ---
 class Item:
