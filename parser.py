@@ -271,7 +271,7 @@ build_parsing_table()
 
 # --- parser() 함수는 건드리지 않음 ---
 def parser(tokens: List[str]) -> Tuple[bool, Union[ParseTree, ErrorReport]]:
-    print(">> Token List:", tokens)
+#    print(">> Token List:", tokens)
     tokens.append('$')
     input_pointer = 0
     state_stack = [0]
@@ -334,7 +334,7 @@ def parser(tokens: List[str]) -> Tuple[bool, Union[ParseTree, ErrorReport]]:
                 print(f"  Expected: {expected}")
                 return False, ErrorReport(input_pointer, f"unexpected token '{current_token}'")
             
-
+'''
 print("\n======= States =======")
 for i, state in enumerate(states):
     print(f"\nState {i}:")
@@ -346,3 +346,4 @@ for state, actions in parsing_table.items():
     print(f"\nState {state}:")
     for symbol, act in actions.items():
         print(f"  {symbol}: {act}")
+        '''
