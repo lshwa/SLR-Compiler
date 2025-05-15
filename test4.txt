@@ -1,0 +1,16 @@
+type id ( type id , type id ) {
+  type id = id ( num , num ) ;
+  while ( id == num ) {
+    if ( id == num ) {
+      type id = num + num * ( num + num ) ;
+    } else {
+      for ( id ; id == num ; id ) {
+        id = id + num ;
+        if ( id == num ) {
+          return id ;
+        }
+      }
+    }
+  }
+  return id ;
+}

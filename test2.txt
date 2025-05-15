@@ -1,0 +1,7 @@
+type id ( type id , type id ) {
+  type id = num + num * num ;
+  return id ;
+}
+type id ( ) {
+  return id ( num , num ) ;
+}

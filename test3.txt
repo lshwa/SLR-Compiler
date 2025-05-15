@@ -1,0 +1,8 @@
+type id ( ) {
+  while ( id == num ) {
+    if ( id == num ) {
+      type id = ( num + num ) * num ;
+    }
+  }
+  return id ;
+}
