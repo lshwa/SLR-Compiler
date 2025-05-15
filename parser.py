@@ -37,7 +37,7 @@ cfg = {
     16: "Stmt → LoopStmt",
     17: "Stmt → ReturnStmt",
     18: "Stmt → ExprStmt",
-    19: "Stmt → VarDecl",
+    19: "Stmt → VarDecl", # 추가 CFG 문법 수정 ADD 
     20: "Stmt → Block",
     21: "IfStmt → if ( Expr ) Stmt ElsePart",
     22: "ElsePart → else Stmt",
@@ -45,7 +45,7 @@ cfg = {
     24: "LoopStmt → while ( Expr ) Stmt",
     25: "LoopStmt → for ( Expr ; Expr ; Expr ) Stmt",
     26: "ReturnStmt → return Expr ;",
-    27: "ExprStmt → Expr ;",
+    27: "ExprStmt → id = Expr ;", # 추가 CFG 문법 수정 (기존 ExprStmt --> id = Expr; (prev. ExprStmt --> Expr ;)
     28: "Expr → EqualityExpr",
     29: "EqualityExpr → EqualityExpr == AddExpr",
     30: "EqualityExpr → AddExpr",
