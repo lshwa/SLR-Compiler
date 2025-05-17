@@ -1,0 +1,14 @@
+type id ( ) {
+  if ( id == num ) {
+    {
+      type id = num ;
+      if ( id == num ) {
+        return id ;
+      }
+    }
+  } else {
+    {
+      return id ;
+    }
+  }
+}
