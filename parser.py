@@ -412,13 +412,13 @@ def build_parsing_table():
             if goto_state is not None:
                 parsing_table[state_id][nonterm] = str(goto_state)
     
-    ''' 
-    print("\nParsing Table") # 디버깅용 
-    for state in sorted(parsing_table.keys()):
-        print(f"\nState {state}:")
-        for symbol, action in parsing_table[state].items():
-            print(f"  {symbol:8} → {action}")
-    '''
+    
+    # print("\nParsing Table") # 디버깅용 
+    # for state in sorted(parsing_table.keys()):
+    #     print(f"\nState {state}:")
+    #     for symbol, action in parsing_table[state].items():
+    #         print(f"  {symbol:8} → {action}")
+    
 
 '''
 CFG -> FIRST / FOLLOW 계산 -> DFA state 생성 -> ACTION / GOTO 테이블 생성 
